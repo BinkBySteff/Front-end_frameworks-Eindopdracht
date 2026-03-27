@@ -1,0 +1,27 @@
+:root {
+  /* Primary: RealEstateCare teal */
+  --ion-color-primary: rgb(0, 170, 162);
+  --ion-color-primary-rgb: 0, 170, 162;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: rgb(0, 150, 143);
+  --ion-color-primary-tint: rgb(26, 182, 175);
+
+  /* Secondary: donkerblauw/grijs */
+  --ion-color-secondary: rgb(71, 94, 108);
+  --ion-color-secondary-rgb: 71, 94, 108;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: rgb(54, 72, 83);
+  --ion-color-secondary-tint: rgb(92, 115, 128);
+
+  /* Donker: diepste kleur */
+  --ion-color-dark: rgb(20, 27, 31);
+  --ion-color-dark-rgb: 20, 27, 31;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+
+  /* Basiskleur */
+  --ion-background-color: #ffffff;
+  --ion-text-color: rgb(20, 27, 31);
+}

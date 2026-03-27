@@ -1,0 +1,57 @@
+{
+  "inspections": [
+    {
+"id": 1,
+  "propertyAddress": "Paul Krugerlaan 2, Breda",
+  "inspectorName": "Hans van Kerken en Dennis Vennink",
+  "inspectionDate": "2026-02-10",
+  "status": "completed",
+  "inspectionTypes": ["damage", "maintenance"],
+  "damageReport": {
+    "location": "Badkamer",
+    "damageType": "vochtschade",
+    "urgentAction": false,
+    "description": "Lichte vochtschade in badkamer"
+  },
+  "maintenanceReport": {
+    "location": "Dak",
+    "maintenanceType": "dakpannen",
+    "urgentAction": true,
+    "costEstimate": "500-1500"
+  },
+  "photos": ["badkamer1.jpg"]
+    },
+    {
+      "id": 2,
+      "propertyAddress": "Kerkstraat 8, Tilburg",
+      "inspectorName": "Dennis Vennink",
+      "inspectionDate": "2026-02-14",
+      "status": "completed",
+      "notes": "Dakpannen moeten vervangen worden"
+    },
+    {
+      "id": 3,
+      "propertyAddress": "Singel 101, Dordrecht",
+      "inspectorName": "Peter Koppens",
+      "inspectionDate": "2026-02-20",
+      "status": "completed",
+      "notes": "Stopcontacten moeten gecontroleerd worden"
+    },
+    {
+      "id": 4,
+      "propertyAddress": "Stationsplein 3, Rotterdam",
+      "inspectorName": "Wim Gruiters",
+      "inspectionDate": "2026-02-25",
+      "status": "completed",
+      "notes": "Verfschade in de hal"
+    },
+    {
+      "id": 5,
+      "propertyAddress": "Havenstraat 44, Eindhoven",
+      "inspectorName": "Dennis Vennink",
+      "inspectionDate": "2026-03-01",
+      "status": "completed",
+      "notes": "Waterdruk in de keuken te laag"
+    }
+  ]
+}
