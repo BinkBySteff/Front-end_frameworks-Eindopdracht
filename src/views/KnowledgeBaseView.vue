@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader title="Kennisbank" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="knowledge-wrapper">
         <div class="knowledge-card">
           <h3 class="card-title">Richtlijnen inspectie</h3>

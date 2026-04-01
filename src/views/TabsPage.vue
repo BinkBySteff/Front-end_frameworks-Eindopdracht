@@ -25,6 +25,11 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
+
+    <!-- Statisch logo boven de Dashboard-tab -->
+    <div class="floating-logo">
+      <img src="/src/assets/Logo-Dashboard.png" alt="RealEstateCare logo" />
+    </div>
   </ion-page>
 </template>
 
@@ -64,3 +69,26 @@ function goRoot(path: string) {
   router.replace(path)
 }
 </script>
+
+<style scoped>
+.floating-logo {
+  position: fixed;
+  left: 50.3%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.floating-logo img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  display: block;
+}
+</style>

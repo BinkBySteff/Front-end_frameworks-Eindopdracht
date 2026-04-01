@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader title="Instellingen" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="settings-wrapper">
         <div class="settings-card">
           <h3 class="card-title">Meldingen</h3>
@@ -47,7 +47,7 @@
               <ion-label>Profiel</ion-label>
             </ion-item>
 
-            <ion-item button detail @click="logout">
+            <ion-item button detail>
               <ion-label>Uitloggen</ion-label>
             </ion-item>
           </ion-list>
@@ -59,7 +59,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import {
   IonPage,
   IonContent,
@@ -72,16 +71,10 @@ import {
 } from '@ionic/vue'
 import AppHeader from '@/components/AppHeader.vue'
 
-const router = useRouter()
-
 const pushEnabled = ref(true)
 const emailEnabled = ref(false)
 const darkMode = ref(false)
 const language = ref('nl')
-
-function logout() {
-  router.replace('/login')
-}
 </script>
 
 <style scoped>
@@ -94,6 +87,7 @@ function logout() {
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 16px;
+
   box-shadow:
     0 10px 26px rgba(20, 27, 31, 0.08),
     0 2px 8px rgba(20, 27, 31, 0.06);

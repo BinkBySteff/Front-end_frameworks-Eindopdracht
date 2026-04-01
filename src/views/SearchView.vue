@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader title="Zoeken" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="page-wrapper">
         <ion-searchbar
           v-model="searchQuery"

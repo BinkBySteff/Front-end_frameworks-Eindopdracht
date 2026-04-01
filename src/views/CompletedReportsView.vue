@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader title="Uitgevoerde inspecties" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="completed-wrapper">
         <p v-if="loading" class="status-text">Inspecties laden...</p>
 

@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader :title="headerTitle" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="page-wrapper">
         <div class="card">
           <div class="step-header">

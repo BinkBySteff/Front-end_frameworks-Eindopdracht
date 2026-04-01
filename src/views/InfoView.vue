@@ -2,13 +2,13 @@
   <ion-page>
     <AppHeader title="Informatie" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="info-wrapper">
         <div class="info-card">
           <h3 class="card-title">Over LOI RealEstateCare Case</h3>
           <p>
             Mijn naam is Steffen Aerts en voor de module Front-end, onderdeel frameworks, heb ik
-            deze applicatie ontwikkeld. Inzendcode: 32411SA1 Leidse Onderwijsinstellingen.
+            deze applicatie ontwikkeld. Inzendcode: 32411FA3 Leidse Onderwijsinstellingen.
           </p>
         </div>
 

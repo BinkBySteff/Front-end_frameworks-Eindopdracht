@@ -2,7 +2,7 @@
   <ion-page>
     <AppHeader title="Toegewezen rapportages" />
 
-    <ion-content class="recare-bg" fullscreen>
+    <ion-content class="recare-bg">
       <div class="page-wrapper">
         <h2 class="page-title"></h2>
 

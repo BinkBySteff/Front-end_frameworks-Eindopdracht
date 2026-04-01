@@ -5,6 +5,7 @@ body,
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 *,
@@ -31,12 +32,13 @@ body {
 }
 
 /* =========================================
-   Content tussenruimte
+   Algemene ion-content styling
 ========================================= */
 ion-content {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 16px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
   --background: #edf0f4;
 }
 
@@ -45,7 +47,6 @@ ion-content {
 ========================================= */
 ion-content.recare-bg {
   --background: transparent;
-
   background-image:
     url('/src/assets/Achtergrondafbeeldingboven.png'),
     url('/src/assets/Achtergrondafbeeldingonder.png');
@@ -62,48 +63,171 @@ ion-content.recare-bg {
    Toolbar
 ========================================= */
 ion-toolbar.recare-toolbar {
-  --background: rgba(0, 170, 162, 1);
+  --background: rgb(0, 170, 162);
   --color: #ffffff;
+}
+
+ion-toolbar.recare-toolbar-dark {
+  --background: rgb(20, 27, 31);
+  --color: #ffffff;
+  --min-height: 72px;
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.recare-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.recare-toolbar-start {
+  align-items: center;
 }
 
 /* =========================================
    Tabbar
 ========================================= */
+ion-tabs {
+  position: relative;
+  overflow: visible !important;
+}
+
 ion-tab-bar {
   --background: #ffffff;
   --color: rgba(20, 27, 31, 0.55);
   --color-selected: rgb(0, 170, 162);
   border-top: 1px solid rgba(20, 27, 31, 0.12);
+  overflow: visible !important;
+  padding-top: 0;
+}
+
+ion-tab-bar::part(container) {
+  overflow: visible !important;
 }
 
 /* =========================================
-   Dashboard tegels
+   Dashboard layout
 ========================================= */
-.recare-tiles {
-  padding: 16px;
+.recare-dashboard-page {
+  position: relative;
+  height: 100%;
+}
+
+.recare-dashboard-page::part(scroll) {
+  overflow: hidden;
+}
+
+.dashboard-shell {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  overflow: hidden;
+}
+
+.dashboard-top-spacer {
+  height: 68px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   Recente inspecties kaart
+========================================= */
+.recent-inspections-panel {
+  margin: 0 14px 10px 14px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 22px;
+  padding: 10px 12px;
+  box-shadow:
+    0 10px 26px rgba(20, 27, 31, 0.12),
+    0 2px 8px rgba(20, 27, 31, 0.08);
+  flex-shrink: 0;
+}
+
+.recent-panel-header {
+  margin-bottom: 7px;
+}
+
+.recent-panel-title {
+  margin: 0 0 2px 0;
+  font-size: 15px;
+  line-height: 1.15;
+  color: rgb(20, 27, 31);
+}
+
+.recent-panel-subtitle {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.2;
+  color: rgba(20, 27, 31, 0.65);
+}
+
+.recent-panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recent-panel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  background: #f3f3f3;
+  padding: 8px 14px;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.recent-panel-item:hover {
+  background: #ececec;
+}
+
+.recent-panel-address {
+  display: block;
+  margin: 0 0 3px 0;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: rgb(20, 27, 31);
+  word-break: break-word;
+}
+
+.recent-panel-date {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.15;
+  color: rgba(20, 27, 31, 0.6);
+}
+
+.recent-panel-empty {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(20, 27, 31, 0.6);
+}
+
+/* =========================================
+   Tegelgedeelte
+========================================= */
+.dashboard-tiles-section {
+  position: relative;
+  padding: 0 14px 92px 14px;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .recare-tiles-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 30px;
-}
-
-/* Tegel (vierkant) */
-.recare-tile {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-
-  border-radius: 18px;
-  overflow: hidden;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  background-color: rgba(255, 255, 255, 0.92);
+  gap: 14px;
+  margin-top: 0;
+  height: 100%;
 }
 
 .recare-tile-link {
@@ -117,43 +241,39 @@ ion-tab-bar {
 .recare-tile {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  min-height: 0;
   border-radius: 18px;
   overflow: hidden;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.92);
-
-  /* Schaduw */
   box-shadow:
     0 10px 26px rgba(20, 27, 31, 0.12),
     0 2px 8px rgba(20, 27, 31, 0.08);
-
   transition:
     transform 160ms ease,
     box-shadow 160ms ease;
 }
 
-/* Tekst in tegel */
 .recare-tile-content {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-
-  padding: 16px;
-  padding-bottom: 44px;
-
+  padding: 12px;
+  padding-bottom: 24px;
   text-align: center;
-
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.95) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
 }
 
 .recare-tile-link:active .recare-tile {
@@ -173,43 +293,86 @@ ion-tab-bar {
 }
 
 .recare-tile-title {
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 1.15;
   margin: 0;
   color: rgb(20, 27, 31);
 }
 
 .recare-tile-subtitle {
-  font-size: 13px;
+  font-size: 11px;
   line-height: 1.2;
-  margin: 6px 0 0 0;
+  margin: 5px 0 0 0;
   color: rgba(20, 27, 31, 0.7);
 }
 
-/* 4 kolommen */
+/* =========================================
+   Responsive
+========================================= */
 @media (min-width: 768px) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  .dashboard-shell {
+    height: auto;
+    min-height: 100dvh;
+    display: block;
+    overflow: visible;
+  }
+
+  .dashboard-top-spacer {
+    height: 72px;
+  }
+
+  .recent-inspections-panel {
+    margin: 0 16px 18px 16px;
+    padding: 16px;
+  }
+
+  .recent-panel-title {
+    font-size: 20px;
+  }
+
+  .recent-panel-subtitle {
+    font-size: 13px;
+  }
+
+  .recent-panel-address {
+    font-size: 15px;
+  }
+
+  .recent-panel-date {
+    font-size: 12px;
+  }
+
+  .dashboard-tiles-section {
+    padding: 0 16px 96px 16px;
+    overflow: visible;
+  }
+
   .recare-tiles-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    height: auto;
   }
 
-  ion-toolbar.recare-toolbar-dark {
-    --background: rgb(20, 27, 31);
-    --color: #ffffff;
-    --min-height: 72px;
-    padding-left: 12px;
-    padding-right: 8px;
+  .recare-tile {
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 
-  .recare-logo {
-    height: 28px;
-    width: auto;
-    display: block;
+  .recare-tile-content {
+    padding: 16px;
+    padding-bottom: 40px;
   }
 
-  .recare-toolbar-start {
-    align-items: center;
+  .recare-tile-title {
+    font-size: 16px;
   }
-  .recare-dashboard .recare-tiles-grid {
-    margin-top: 0px;
+
+  .recare-tile-subtitle {
+    font-size: 13px;
   }
 }
