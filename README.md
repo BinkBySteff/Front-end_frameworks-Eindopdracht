@@ -34,15 +34,15 @@ De applicatie is daarna bereikbaar via het adres dat in de terminal verschijnt (
 ## Functionaliteiten
 
 ### Vier verplichte schermen
-- **Toegewezen inspecties** — openstaande inspecties opgehaald via de API, gesorteerd op datum, met een modal om het inspectieformulier te starten
-- **Uitgevoerde inspecties** — afgeronde inspecties met detailweergave per categorie (schade, onderhoud, installaties, modificaties)
-- **Kennisbank** — richtlijnen, FAQ en documentatiedownloads voor inspecteurs
-- **Instellingen** — notificatie- en weergavevoorkeuren, uitlogfunctie
+- **Toegewezen inspecties** - openstaande inspecties opgehaald via de API, gesorteerd op datum, met een modal om het inspectieformulier te starten
+- **Uitgevoerde inspecties** - afgeronde inspecties met detailweergave per categorie (schade, onderhoud, installaties, modificaties)
+- **Kennisbank** - richtlijnen, FAQ en documentatiedownloads voor inspecteurs
+- **Instellingen** - notificatie- en weergavevoorkeuren, uitlogfunctie
 
 ### Extra schermen
-- **Dashboard** — overzichtstegels met badges voor openstaande inspecties en recente activiteit
-- **Zoeken** — zoekfunctie over zowel inspecties als kennisbankdocumenten
-- **Informatie** — app-informatie en technische details
+- **Dashboard** - overzichtstegels met badges voor openstaande inspecties en recente activiteit
+- **Zoeken** - zoekfunctie over zowel inspecties als kennisbankdocumenten
+- **Informatie** - app-informatie en technische details
 - **Login + twee-factor verificatie** — gesimuleerde 2FA via een 6-cijferig invoerscherm
 
 ### Inspectieformulier (AssignedReportDetailView)
