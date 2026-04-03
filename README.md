@@ -2,7 +2,7 @@
 
 Een mobiele webapplicatie voor inspecteurs van RealEstateCare, waarmee inspecties op locatie digitaal kunnen worden uitgevoerd. De app vervangt de papieren formulieren die voorheen werden gebruikt bij het opnemen van schade, achterstallig onderhoud, technische installaties en modificaties.
 
-**Live demo:** https://loi-eindopdracht.netlify.app/
+**Live demo:** https://eindopdracht-loi.netlify.app/
 **Demo-inloggegevens:** `LOI-inspecteur@recare.nl` / `inspectie` → verificatiecode `123456`
 
 ---
