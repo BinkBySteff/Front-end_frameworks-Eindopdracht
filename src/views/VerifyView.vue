@@ -112,7 +112,7 @@ const fullCode = computed(() => digits.value.join(''))
 function onInput(index: number) {
   const val = digits.value[index]
   // Alleen cijfers toestaan
-  if (!/^\d$/.test(val)) {
+  if (!/^\d$/.test(val ?? '')) {
     digits.value[index] = ''
     return
   }
