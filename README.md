@@ -2,7 +2,7 @@
 
 Een mobiele webapplicatie voor inspecteurs van RealEstateCare, waarmee inspecties op locatie digitaal kunnen worden uitgevoerd. De app vervangt de papieren formulieren die voorheen werden gebruikt bij het opnemen van schade, achterstallig onderhoud, technische installaties en modificaties.
 
-**Live demo:** [link naar Firebase/Netlify]
+**Live demo:** https://loi-eindopdracht.netlify.app/
 **Demo-inloggegevens:** `LOI-inspecteur@recare.nl` / `inspectie` → verificatiecode `123456`
 
 ---
@@ -34,16 +34,16 @@ De applicatie is daarna bereikbaar via het adres dat in de terminal verschijnt (
 ## Functionaliteiten
 
 ### Vier verplichte schermen
-- **Toegewezen inspecties** — openstaande inspecties opgehaald via de API, gesorteerd op datum, met een modal om het inspectieformulier te starten
-- **Uitgevoerde inspecties** — afgeronde inspecties met detailweergave per categorie (schade, onderhoud, installaties, modificaties)
-- **Kennisbank** — richtlijnen, FAQ en documentatiedownloads voor inspecteurs
-- **Instellingen** — notificatie- en weergavevoorkeuren, uitlogfunctie
+- **Toegewezen inspecties** - openstaande inspecties opgehaald via de API, gesorteerd op datum, met een modal om het inspectieformulier te starten
+- **Uitgevoerde inspecties** - afgeronde inspecties met detailweergave per categorie (schade, onderhoud, installaties, modificaties)
+- **Kennisbank** - richtlijnen, FAQ en documentatiedownloads voor inspecteurs
+- **Instellingen** - notificatie- en weergavevoorkeuren, uitlogfunctie
 
 ### Extra schermen
-- **Dashboard** — overzichtstegels met badges voor openstaande inspecties en recente activiteit
-- **Zoeken** — zoekfunctie over zowel inspecties als kennisbankdocumenten
-- **Informatie** — app-informatie en technische details
-- **Login + twee-factor verificatie** — gesimuleerde 2FA via een 6-cijferig invoerscherm
+- **Dashboard** - overzichtstegels met badges voor openstaande inspecties en recente activiteit
+- **Zoeken** - zoekfunctie over zowel inspecties als kennisbankdocumenten
+- **Informatie** - app-informatie en technische details
+- **Login + twee-factor verificatie** - gesimuleerde 2FA via een 6-cijferig invoerscherm
 
 ### Inspectieformulier (AssignedReportDetailView)
 Het formulier is opgebouwd in drie stappen: invullen, opmerkingen en foto's, en een controlepagina. Het ondersteunt vier inspectietypes: schade, onderhoud, technische installaties en modificaties.
