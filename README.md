@@ -43,7 +43,7 @@ De applicatie is daarna bereikbaar via het adres dat in de terminal verschijnt (
 - **Dashboard** - overzichtstegels met badges voor openstaande inspecties en recente activiteit
 - **Zoeken** - zoekfunctie over zowel inspecties als kennisbankdocumenten
 - **Informatie** - app-informatie en technische details
-- **Login + twee-factor verificatie** — gesimuleerde 2FA via een 6-cijferig invoerscherm
+- **Login + twee-factor verificatie** - gesimuleerde 2FA via een 6-cijferig invoerscherm
 
 ### Inspectieformulier (AssignedReportDetailView)
 Het formulier is opgebouwd in drie stappen: invullen, opmerkingen en foto's, en een controlepagina. Het ondersteunt vier inspectietypes: schade, onderhoud, technische installaties en modificaties.
