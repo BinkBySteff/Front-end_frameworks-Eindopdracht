@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <AppHeader title="Dashboard - Real Estate Care" />
-    <ion-content class="recare-bg recare-dashboard-page" fullscreen :scroll-y="true">
+    <ion-content class="recare-bg recare-dashboard-page" :scroll-y="false">
       <div class="dashboard-shell">
 
         <div class="dashboard-top-spacer"></div>
@@ -9,6 +9,8 @@
         <!-- Tegels -->
         <div class="dashboard-tiles-section">
           <div class="recare-tiles-grid">
+
+            <!-- Toegewezen met badge -->
             <a class="recare-tile-link" href="/tabs/assigned">
               <div class="recare-tile tile-toegewezen">
                 <div class="recare-tile-content">
@@ -16,7 +18,11 @@
                   <p class="recare-tile-subtitle">{{ inspectionStore.assignedReports.length }} openstaande inspecties</p>
                 </div>
               </div>
+              <div v-if="inspectionStore.assignedReports.length > 0" class="tile-badge">
+                {{ inspectionStore.assignedReports.length }}
+              </div>
             </a>
+
             <a class="recare-tile-link" href="/tabs/completed">
               <div class="recare-tile tile-uitgevoerd">
                 <div class="recare-tile-content">
@@ -25,6 +31,7 @@
                 </div>
               </div>
             </a>
+
             <a class="recare-tile-link" href="/tabs/knowledge">
               <div class="recare-tile tile-kennisbank">
                 <div class="recare-tile-content">
@@ -33,6 +40,7 @@
                 </div>
               </div>
             </a>
+
             <a class="recare-tile-link" href="/tabs/settings">
               <div class="recare-tile tile-instellingen">
                 <div class="recare-tile-content">
@@ -41,6 +49,7 @@
                 </div>
               </div>
             </a>
+
           </div>
         </div>
 
@@ -66,8 +75,11 @@
               class="recent-panel-item"
               @click="openDetail(inspection)"
             >
-              <span class="recent-panel-address">{{ inspection.propertyAddress }}</span>
-              <span class="recent-panel-date">{{ formatDate(inspection.inspectionDate) }}</span>
+              <div class="recent-panel-item-text">
+                <span class="recent-panel-address">{{ inspection.propertyAddress }}</span>
+                <span class="recent-panel-date">{{ formatDate(inspection.inspectionDate) }}</span>
+              </div>
+              <span class="recent-panel-item-arrow">›</span>
             </button>
           </div>
 
@@ -191,9 +203,17 @@
             </div>
           </template>
 
-          <div v-if="selectedInspection.photos?.length" class="detail-row">
-            <div class="detail-label">Foto's</div>
-            <div class="detail-value">{{ selectedInspection.photos.join(', ') }}</div>
+          <div v-if="selectedInspection.photos?.length">
+            <div class="detail-section-title">Foto's</div>
+            <div class="photos-grid">
+              <img
+                v-for="photo in selectedInspection.photos"
+                :key="photo"
+                :src="`/src/assets/${photo}`"
+                :alt="photo"
+                class="inspection-photo"
+              />
+            </div>
           </div>
         </div>
       </ion-content>
@@ -243,47 +263,11 @@ function closeDetail() {
 .tile-kennisbank { background-image: url('/src/assets/Kennisbank.png'); }
 .tile-instellingen { background-image: url('/src/assets/Instellingen.png'); }
 
-/* Shell: scrollbaar, geen vaste hoogte */
-.dashboard-shell {
-  height: auto;
-  min-height: 100%;
-  overflow: visible;
-  display: block;
-}
-
-/* Tegels: nooit afknippen, altijd zichtbaar */
-.dashboard-tiles-section {
-  overflow: visible;
-  padding-bottom: 0;
-}
-
-/* Grid: aspect-ratio zodat tegels altijd vierkant en zichtbaar zijn */
-.recare-tiles-grid {
-  height: auto;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.recare-tile {
-  height: auto;
-  aspect-ratio: 1 / 1;
-}
-
-@media (min-width: 768px) {
-  .recare-tiles-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-/* Recente inspecties direct onder de tegels met minimale marge */
-.recent-inspections-panel {
-  margin-top: 10px;
-}
-
 .loading-state {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+  gap: 8px;
+  padding: 4px 0;
 }
 
 .loading-text {
@@ -293,7 +277,7 @@ function closeDetail() {
 }
 
 .error-text {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   font-size: 12px;
   color: #c0392b;
 }
@@ -320,4 +304,19 @@ function closeDetail() {
 
 .detail-label { font-size: 12px; color: rgba(20, 27, 31, 0.6); }
 .detail-value { font-size: 13px; color: rgb(20, 27, 31); font-weight: 500; }
+
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.inspection-photo {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(20, 27, 31, 0.12);
+}
 </style>

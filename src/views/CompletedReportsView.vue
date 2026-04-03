@@ -6,7 +6,7 @@
       <div class="completed-wrapper">
 
         <div v-if="inspectionStore.loading" class="loading-state">
-          <ion-spinner name="crescent" color="primary" />
+          <ion-spinner name="crescent" color="light" />
           <p class="loading-text">Inspecties laden...</p>
         </div>
 
@@ -156,9 +156,17 @@
             </div>
           </template>
 
-          <div v-if="selectedInspection.photos?.length" class="detail-row">
-            <div class="detail-label">Foto's</div>
-            <div class="detail-value">{{ selectedInspection.photos.join(', ') }}</div>
+          <div v-if="selectedInspection.photos?.length">
+            <div class="detail-section-title">Foto's</div>
+            <div class="photos-grid">
+              <img
+                v-for="photo in selectedInspection.photos"
+                :key="photo"
+                :src="`/src/assets/${photo}`"
+                :alt="photo"
+                class="inspection-photo"
+              />
+            </div>
           </div>
         </div>
       </ion-content>
@@ -209,14 +217,16 @@ function formatDate(isoDate: string) {
 .loading-state {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 0;
+  gap: 12px;
+  padding: 24px 16px;
 }
 
 .loading-text {
   margin: 0;
-  font-size: 13px;
-  color: rgba(20, 27, 31, 0.6);
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .status-text.error {
@@ -263,4 +273,19 @@ function formatDate(isoDate: string) {
 .detail-label { font-size: 12px; color: rgba(20, 27, 31, 0.6); }
 
 .detail-value { font-size: 13px; color: rgb(20, 27, 31); font-weight: 500; }
+
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.inspection-photo {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(20, 27, 31, 0.12);
+}
 </style>

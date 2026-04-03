@@ -11,36 +11,27 @@
           </div>
 
           <div class="form-area">
-            <!-- Stap 1: -->
-            <template v-if="stepKey === 'basis'">
-              <ion-item>
-                <ion-label position="stacked">Locatie</ion-label>
-                <ion-input v-model="form.location" placeholder="Bijv. Rotterdam, gebouw A" />
-              </ion-item>
 
-              <ion-item>
-                <ion-label position="stacked">Datum</ion-label>
-                <ion-datetime v-model="form.date" presentation="date" />
-              </ion-item>
+            <!-- STAP 1: Type-specifieke velden (inclusief locatie en datum) -->
+            <template v-if="stepKey === 'formulier'">
 
-              <ion-item>
-                <ion-label>Acute actie vereist</ion-label>
-                <ion-toggle v-model="form.urgent" />
-              </ion-item>
-            </template>
-
-            <!-- Stap 2:-->
-            <template v-else-if="stepKey === 'specifiek'">
               <!-- SCHADE -->
               <template v-if="type === 'schade'">
                 <ion-item>
-                  <ion-label position="stacked">Nieuwe schade</ion-label>
-                  <ion-segment v-model="form.damageNew">
+                  <ion-label position="stacked">Locatie</ion-label>
+                  <ion-input v-model="form.location" placeholder="Bijv. badkamer, hal..." />
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Datum</ion-label>
+                  <ion-datetime v-model="form.date" presentation="date" />
+                </ion-item>
+                <ion-item>
+                  <ion-label>Nieuwe schade</ion-label>
+                  <ion-segment v-model="form.damageNew" slot="end" style="max-width: 160px">
                     <ion-segment-button value="ja"><ion-label>Ja</ion-label></ion-segment-button>
                     <ion-segment-button value="nee"><ion-label>Nee</ion-label></ion-segment-button>
                   </ion-segment>
                 </ion-item>
-
                 <ion-item>
                   <ion-label position="stacked">Soort schade</ion-label>
                   <ion-select v-model="form.damageType" interface="popover" placeholder="Kies">
@@ -52,10 +43,22 @@
                     <ion-select-option value="anders">Anders</ion-select-option>
                   </ion-select>
                 </ion-item>
+                <ion-item>
+                  <ion-label>Acute actie vereist</ion-label>
+                  <ion-toggle v-model="form.urgent" />
+                </ion-item>
               </template>
 
               <!-- ONDERHOUD -->
               <template v-else-if="type === 'onderhoud'">
+                <ion-item>
+                  <ion-label position="stacked">Locatie</ion-label>
+                  <ion-input v-model="form.location" placeholder="Bijv. dak, gevel..." />
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Datum</ion-label>
+                  <ion-datetime v-model="form.date" presentation="date" />
+                </ion-item>
                 <ion-item>
                   <ion-label position="stacked">Soort onderhoud</ion-label>
                   <ion-select v-model="form.maintenanceType" interface="popover" placeholder="Kies">
@@ -66,13 +69,16 @@
                     <ion-select-option value="beglazing">Beglazing</ion-select-option>
                   </ion-select>
                 </ion-item>
-
+                <ion-item>
+                  <ion-label>Acute actie vereist</ion-label>
+                  <ion-toggle v-model="form.urgent" />
+                </ion-item>
                 <ion-item>
                   <ion-label position="stacked">Kostenindicatie</ion-label>
                   <ion-select v-model="form.costRange" interface="popover" placeholder="Kies">
-                    <ion-select-option value="0-500">0 - 500</ion-select-option>
-                    <ion-select-option value="500-1500">500 - 1.500</ion-select-option>
-                    <ion-select-option value="1500+">1.500+</ion-select-option>
+                    <ion-select-option value="0-500">€ 0 - 500</ion-select-option>
+                    <ion-select-option value="500-1500">€ 500 - 1.500</ion-select-option>
+                    <ion-select-option value="1500+">€ 1.500+</ion-select-option>
                   </ion-select>
                 </ion-item>
               </template>
@@ -80,12 +86,16 @@
               <!-- INSTALLATIES -->
               <template v-else-if="type === 'installaties'">
                 <ion-item>
+                  <ion-label position="stacked">Locatie</ion-label>
+                  <ion-input v-model="form.location" placeholder="Bijv. kelder, technische ruimte..." />
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Datum</ion-label>
+                  <ion-datetime v-model="form.date" presentation="date" />
+                </ion-item>
+                <ion-item>
                   <ion-label position="stacked">Soort installatie</ion-label>
-                  <ion-select
-                    v-model="form.installationType"
-                    interface="popover"
-                    placeholder="Kies"
-                  >
+                  <ion-select v-model="form.installationType" interface="popover" placeholder="Kies">
                     <ion-select-option value="koeling">Koeling</ion-select-option>
                     <ion-select-option value="verwarming">Verwarming</ion-select-option>
                     <ion-select-option value="luchtverversing">Luchtverversing</ion-select-option>
@@ -93,19 +103,13 @@
                     <ion-select-option value="beveiliging">Beveiliging</ion-select-option>
                   </ion-select>
                 </ion-item>
-
                 <ion-item>
                   <ion-label position="stacked">Gemelde storingen</ion-label>
-                  <ion-textarea
-                    v-model="form.failures"
-                    placeholder="Beschrijf kort de storing(en)"
-                    auto-grow
-                  />
+                  <ion-textarea v-model="form.failures" placeholder="Beschrijf de storing(en)" auto-grow />
                 </ion-item>
-
                 <ion-item>
-                  <ion-label position="stacked">Goedgekeurd</ion-label>
-                  <ion-segment v-model="form.approved">
+                  <ion-label>Goedgekeurd</ion-label>
+                  <ion-segment v-model="form.approved" slot="end" style="max-width: 160px">
                     <ion-segment-button value="ja"><ion-label>Ja</ion-label></ion-segment-button>
                     <ion-segment-button value="nee"><ion-label>Nee</ion-label></ion-segment-button>
                   </ion-segment>
@@ -115,6 +119,14 @@
               <!-- MODIFICATIES -->
               <template v-else-if="type === 'modificaties'">
                 <ion-item>
+                  <ion-label position="stacked">Locatie aangetroffen modificatie</ion-label>
+                  <ion-input v-model="form.location" placeholder="Bijv. woonkamer, keuken..." />
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Datum</ion-label>
+                  <ion-datetime v-model="form.date" presentation="date" />
+                </ion-item>
+                <ion-item>
                   <ion-label position="stacked">Uitgevoerd door</ion-label>
                   <ion-select v-model="form.performedBy" interface="popover" placeholder="Kies">
                     <ion-select-option value="huurder">Huurder</ion-select-option>
@@ -122,16 +134,10 @@
                     <ion-select-option value="onbekend">Onbekend</ion-select-option>
                   </ion-select>
                 </ion-item>
-
                 <ion-item>
                   <ion-label position="stacked">Beschrijving modificatie</ion-label>
-                  <ion-textarea
-                    v-model="form.modificationDesc"
-                    placeholder="Wat is er aangepast?"
-                    auto-grow
-                  />
+                  <ion-textarea v-model="form.modificationDesc" placeholder="Wat is er aangepast?" auto-grow />
                 </ion-item>
-
                 <ion-item>
                   <ion-label position="stacked">Te ondernemen actie</ion-label>
                   <ion-select v-model="form.action" interface="popover" placeholder="Kies">
@@ -142,30 +148,26 @@
                   </ion-select>
                 </ion-item>
               </template>
+
             </template>
 
-            <!-- Stap 3: omschrijving + fotos -->
+            <!-- STAP 2: Omschrijving en foto's -->
             <template v-else-if="stepKey === 'omschrijving'">
               <ion-item>
-                <ion-label position="stacked">Omschrijving</ion-label>
-                <ion-textarea
-                  v-model="form.description"
-                  placeholder="Extra toelichting"
-                  auto-grow
-                />
+                <ion-label position="stacked">Opmerkingen</ion-label>
+                <ion-textarea v-model="form.description" placeholder="Extra toelichting" auto-grow />
               </ion-item>
-
               <div class="photo-row">
                 <ion-button expand="block" fill="outline" @click="addPhoto">
-                  Foto toevoegen (placeholder)
+                  Foto toevoegen
                 </ion-button>
                 <div v-if="form.photos.length" class="photo-hint">
-                  {{ form.photos.length }} foto('s) toegevoegd (placeholder)
+                  {{ form.photos.length }} foto('s) toegevoegd
                 </div>
               </div>
             </template>
 
-            <!-- Stap 4: review -->
+            <!-- STAP 3: Controle -->
             <template v-else-if="stepKey === 'review'">
               <div class="review">
                 <div class="review-line">
@@ -181,13 +183,14 @@
                   <span>Acuut</span><span>{{ form.urgent ? 'Ja' : 'Nee' }}</span>
                 </div>
                 <div class="review-line">
-                  <span>Omschrijving</span><span>{{ form.description || '-' }}</span>
+                  <span>Opmerkingen</span><span>{{ form.description || '-' }}</span>
                 </div>
                 <div class="review-line">
-                  <span>Foto’s</span><span>{{ form.photos.length }}</span>
+                  <span>Foto's</span><span>{{ form.photos.length }}</span>
                 </div>
               </div>
             </template>
+
           </div>
 
           <div class="actions">
@@ -205,19 +208,9 @@
 import { computed, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
-  IonPage,
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonTextarea,
-  IonToggle,
-  IonSelect,
-  IonSelectOption,
-  IonButton,
-  IonDatetime,
-  IonSegment,
-  IonSegmentButton,
+  IonPage, IonContent, IonItem, IonLabel, IonInput,
+  IonTextarea, IonToggle, IonSelect, IonSelectOption,
+  IonButton, IonDatetime, IonSegment, IonSegmentButton,
 } from '@ionic/vue'
 import AppHeader from '@/components/AppHeader.vue'
 
@@ -238,47 +231,38 @@ const headerTitle = computed(() => {
   return map[type.value] ?? 'Rapportage'
 })
 
-const steps = computed(
-  () =>
-    [
-      { key: 'basis', title: 'Basisgegevens' },
-      { key: 'specifiek', title: 'Details' },
-      { key: 'omschrijving', title: 'Omschrijving en foto’s' },
-      { key: 'review', title: 'Controle' },
-    ] as const,
-)
+const steps = [
+  { key: 'formulier', title: 'Invullen' },
+  { key: 'omschrijving', title: 'Opmerkingen en foto\'s' },
+  { key: 'review', title: 'Controle' },
+] as const
 
-type StepKey = (typeof steps.value)[number]['key']
+type StepKey = (typeof steps)[number]['key']
 
 const step = ref(0)
-const stepKey = computed<StepKey>(() => steps.value[step.value]?.key ?? 'basis')
-const stepTitle = computed(() => steps.value[step.value]?.title ?? 'Basisgegevens')
+const stepKey = computed<StepKey>(() => steps[step.value]?.key ?? 'formulier')
+const stepTitle = computed(() => steps[step.value]?.title ?? 'Invullen')
 
 const form = reactive({
   location: '',
   date: '',
   urgent: false,
-
   damageNew: 'ja',
   damageType: '',
-
   maintenanceType: '',
   costRange: '',
-
   installationType: '',
   failures: '',
   approved: 'ja',
-
   performedBy: '',
   modificationDesc: '',
   action: '',
-
   description: '',
   photos: [] as string[],
 })
 
 function nextStep() {
-  if (step.value < steps.value.length - 1) step.value++
+  if (step.value < steps.length - 1) step.value++
 }
 
 function prevStep() {
@@ -313,7 +297,7 @@ function submit() {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .step-title {
@@ -328,7 +312,7 @@ function submit() {
 }
 
 .form-area {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .photo-row {
@@ -360,9 +344,11 @@ function submit() {
   gap: 12px;
   font-size: 14px;
   color: rgba(20, 27, 31, 0.8);
+  padding: 6px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
 }
 
 .review-line span:first-child {
-  color: rgba(20, 27, 31, 0.6);
+  color: rgba(20, 27, 31, 0.55);
 }
 </style>
